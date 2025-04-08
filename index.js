@@ -6,14 +6,15 @@ import jwt, { decode } from "jsonwebtoken";
 import productRouter from "./productRouter.js";
 import verifyJWT from "./middleware/auth.js";
 import oderRouter from "./oderRouter.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 
 
-//mongodb+srv://admin:123>@cluster0.abr4v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 const app = express();
 
-mongoose.connect("mongodb+srv://admin:123@cluster0.abr4v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(
+mongoose.connect(process.env.MONGO_URL).then(
     () => {
         console.log("connected to the database");
     }  
