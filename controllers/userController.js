@@ -85,6 +85,8 @@ import user from "../models/user.js";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 export function saveUser(req, res) {
     // Check if the user is trying to create an admin account
@@ -159,7 +161,7 @@ export function loginUser(req, res) {
                     isDisable: user.isDisable,
                     isEmailVerified: user.isEmailVerified
                 };
-                const token = jwt.sign(userData, "random456");
+                const token = jwt.sign(userData,process.env.JWT_KEY);
                 res.json({
                     message: "Login successful",
                     token: token,
