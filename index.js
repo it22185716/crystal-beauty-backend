@@ -7,12 +7,16 @@ import productRouter from "./productRouter.js";
 import verifyJWT from "./middleware/auth.js";
 import oderRouter from "./oderRouter.js";
 import dotenv from "dotenv";
+import cors from "cors";
+
 dotenv.config();
 
-
-
-
 const app = express();
+
+app.use(cors({
+    origin:"*",
+}))
+
 
 mongoose.connect(process.env.MONGO_URL).then(
     () => {
