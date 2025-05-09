@@ -40,7 +40,7 @@ export async function createOder(req, res) {
             total: body.total || 0
         };
 
-        // Save order to database
+        
         const oder = new Oder(oderData);
         await oder.save();
 
